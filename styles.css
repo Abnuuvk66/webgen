@@ -1,0 +1,148 @@
+/* Reset some default margins and set a comfortable font */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f7fa;
+    color: #333;
+    margin: 20px;
+    line-height: 1.5;
+}
+
+/* Container for the whole app (optional if you want centered content) */
+body > h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 1em;
+}
+
+/* Controls container */
+#controls {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 1em 1.2em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5em;
+}
+
+/* Labels */
+#controls label {
+    font-weight: 600;
+    color: #34495e;
+}
+
+/* Inputs */
+#controls input[type=number] {
+    width: 6em;
+    padding: 0.3em 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+#controls input[type=number]:focus {
+    outline: none;
+    border-color: #2980b9;
+    box-shadow: 0 0 5px rgba(41, 128, 185, 0.5);
+}
+
+/* Buttons */
+#controls button,
+#clear-links-btn,
+#download-xlsx-btn {
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    user-select: none;
+}
+
+#controls button:disabled,
+#clear-links-btn:disabled,
+#download-xlsx-btn:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+#controls button:hover:not(:disabled),
+#clear-links-btn:hover:not(:disabled),
+#download-xlsx-btn:hover:not(:disabled) {
+    background-color: #1c5980;
+}
+
+/* URL list styling */
+#url-list {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+    padding: 1em;
+    max-height: 300px;
+    overflow-y: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+    margin-bottom: 1em;
+}
+
+/* Result message styling */
+#check-result {
+    font-weight: 600;
+    font-size: 1.1em;
+    margin-bottom: 1em;
+}
+
+/* Accumulated links container */
+#accumulated-list {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+    padding: 1em;
+}
+
+/* Accumulated links header */
+#accumulated-list h3 {
+    color: #2c3e50;
+    margin-bottom: 0.75em;
+}
+
+/* Each link in accumulated list */
+#reachable-links div {
+    margin-bottom: 0.3em;
+}
+
+#reachable-links a {
+    color: #2980b9;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+#reachable-links a:hover {
+    color: #1c5980;
+    text-decoration: underline;
+}
+
+/* Status colors */
+.valid { color: #27ae60; }          /* green */
+.invalid { color: #c0392b; }        /* red */
+.reachable { color: #2980b9; }      /* blue */
+.unreachable { color: #7f8c8d; }    /* gray */
+.checking { color: #f39c12; }       /* orange */
+
+/* Scrollbar styling for url-list (optional) */
+#url-list::-webkit-scrollbar {
+    width: 8px;
+}
+#url-list::-webkit-scrollbar-thumb {
+    background-color: #bdc3c7;
+    border-radius: 4px;
+}
+#url-list::-webkit-scrollbar-thumb:hover {
+    background-color: #95a5a6;
+}
