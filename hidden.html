@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="hid.css">
+    <title>Text Cipher Converter</title>
+    <style>
+        
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .input-group { margin: 10px 0; }
+        label { display: block; margin: 5px 0; }
+        button { padding: 8px 16px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Text Cipher Converter</h2>
+        
+        <div class="input-group">
+            <label for="textInput">Enter Text:</label>
+            <input type="text" id="textInput" size="40">
+        </div>
+
+        <div class="input-group">
+            <label for="modeSelect">Select Mode:</label>
+            <select id="modeSelect">
+                <option value="g">Giberish Mode (Encrypt)</option>
+                <option value="h">Hidden Mode (Encrypt)</option>
+                <option value="d">Decrypt Mode (Decrypt)</option>
+            </select>
+        </div>
+
+        <button onclick="processText()">Process Text</button>
+        
+        <div class="input-group">
+            <label>Result:</label>
+            <div id="result" style="border: 1px solid #ccc; padding: 10px; min-height: 20px;"></div>
+        </div>
+    </div>
+
+    <script>
+        alert('NOTE:Hidden text wont show up on word, google docs, ect.');
+        alert('Have fun!');
+        function bitFlip(text, ask) {
+            if (ask === 'g') {
+                text = text.toUpperCase().split('');
+            } else if (ask === 'h') {
+                text = text.toLowerCase().replace(/ /g, '_').split('');
+            }
+            
+            let ciph = [];
+            for (let char of text) {
+                let binary = char.charCodeAt(0).toString(2).padStart(8, '0');
+                ciph.push(...binary.split('').map(bit => bit === '1' ? '0' : '1'));
+            }
+            
+            let result = '';
+            for (let i = 0; i < ciph.length; i += 8) {
+                let byte = ciph.slice(i, i+8).join('');
+                result += String.fromCharCode(parseInt(byte, 2));
+            }
+            return result;
+        }
+
+        function runes(text, eord) {
+            let result = '';
+            for (let i = 0; i < text.length; i++) {
+                let char = text[i];
+                if (!char.match(/[a-z]/i)) {
+                    result += char;
+                    continue;
+                }
+                
+                let rot = 13 + i;
+                let code = char.charCodeAt(0);
+                let base = code > 96 ? 97 : 65;
+                
+                if (eord === 'e') {
+                    result += String.fromCharCode((code - base + rot) % 26 + base);
+                } else {
+                    let shifted = (code - base - rot) % 26;
+                    if (shifted < 0) shifted += 26;
+                    result += String.fromCharCode(shifted + base);
+                }
+            }
+            return result;
+        }
+
+        function processText() {
+            const text = document.getElementById('textInput').value;
+            const mode = document.getElementById('modeSelect').value;
+            let result;
+
+            if (mode === 'g' || mode === 'h') {
+                let processed = runes(text, 'e');
+                processed = bitFlip(processed, mode);
+                processed = processed.replace(/­/g, '౸').replace(/º/g, 'ℵ');
+                result = processed;
+            } else {
+                let processed = text.replace(/౸/g, '­').replace(/ℵ/g, 'º');
+                processed = bitFlip(processed, 'd');
+                result = runes(processed, 'd');
+            }
+
+            document.getElementById('result').textContent = result;
+        }
+    </script>
+</body>
+</html>
+
