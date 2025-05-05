@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/png" href="icon.png">
-    <title>Random Website Checker</title>
+    <title>Random Website Checker|WebGen</title>
     <style>
         #url-list { font-family: monospace; margin-bottom: 1em; }
         .valid { color: green; }
@@ -47,8 +47,10 @@
     <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
 </head>
 <body>
-    <h2>Random Website Checker|WebGen</h2>
+    <h2>Random Website Checker</h2>
     <!-- Controls with inputs and start/stop buttons -->
+    <button onclick="location.href='index.html'" type="button">
+         Home</button>
     <div id="controls">
         <label for="minChars">Min chars:</label>
         <input type="number" id="minChars" min="1" max="100" value="5" />
@@ -61,8 +63,6 @@
         <button id="startBtn">Start</button>
         <button id="stopBtn" disabled>Stop</button>
         <br>
-        <button onclick="location.href='index.html'" type="button">
-         Home</button>
     </div>
 
     <button id="clear-links-btn">Clear All Links</button>
