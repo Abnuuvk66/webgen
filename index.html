@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" type="image/png" href="icon.png">
+    <title>Home|WebGen</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+        color: white;
+        text-align: center;
+        padding: 50px;
+        margin: 0;
+      }
+      h1 {
+        font-size: 3em;
+        margin-bottom: 40px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+      }
+      button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 30px;
+        font-size: 1.2em;
+        margin: 10px 20px;
+        cursor: pointer;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+      button:hover {
+        background-color: #45a049;
+        transform: scale(1.05);
+      }
+      button:active {
+        background-color: #3e8e41;
+        transform: scale(0.95);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>WebGen</h1>
+    <button onclick="location.href='hidden.html'" type="button">
+      Hidden Text Generator
+    </button>
+    <br><br>
+    <button onclick="location.href='ingen.html'" type="button">
+      Random Website Generator
+    </button>
+  </body>
+</html>
